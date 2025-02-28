@@ -1,0 +1,375 @@
+{
+	"info": {
+		"_postman_id": "96066d4d-ef5a-43dc-9a70-3640917ab3fd",
+		"name": "isi-tech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5786083"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "/threads/{thread_id}/messages/",
+							"item": [
+								{
+									"name": "/threads/{thread_id}/messages/",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{access_token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{localhost}}/api/v1/threads/3/messages/",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"threads",
+												"3",
+												"messages",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "/threads/{thread_id}/messages/",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "text",
+													"value": "test message  4",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{localhost}}/api/v1/threads/3/messages/",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"threads",
+												"3",
+												"messages",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "/threads/{thread_id}/messages/unread_count",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "text",
+													"value": "test message",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{localhost}}/api/v1/threads/3/messages/unread_count/",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"threads",
+												"3",
+												"messages",
+												"unread_count",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "threads/",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{localhost}}/api/v1/threads/",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"threads",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "threads/{thread_id}",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{localhost}}/api/v1/threads/3/",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"threads",
+										"3",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "threads/",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"participants\": [2, 3, 4]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{localhost}}/api/v1/threads/",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"threads",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "threads/{thread_id}",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{localhost}}/api/v1/threads/2/",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"threads",
+										"2",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"access_token\", jsonData.access);",
+									"pm.environment.set(\"refresh_token\", jsonData.refresh);",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "test_user",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "super_pass",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}/api/token/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "token/refresh/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"access_token\", jsonData.access);",
+									"pm.environment.set(\"refresh_token\", jsonData.refresh);",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "test_user",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "super_pass",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}/api/token/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localhost",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	]
+}
