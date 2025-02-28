@@ -58,11 +58,6 @@ Make sure you have the following installed:
    docker-compose exec web python manage.py createsuperuser
    ```
 
-5. **Restore data from database dump**
-   ```sh
-   docker-compose exec db bash -c "PGPASSWORD=$POSTGRES_PASSWORD pg_restore -U $POSTGRES_USER -d $POSTGRES_DB -f /backup.sql"
-   ```
-
 5. **Access the app:**
    - API: `http://localhost:8000/api/`
    - Admin Panel: `http://localhost:8000/admin/`
