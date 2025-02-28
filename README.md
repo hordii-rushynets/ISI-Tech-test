@@ -39,7 +39,7 @@ Make sure you have the following installed:
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/your-repo/messaging-system.git
+   git clone https://github.com/hordii-rushynets/ISI-Tech-test.git
    cd messaging-system
    ```
 
